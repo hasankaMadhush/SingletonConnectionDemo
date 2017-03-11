@@ -1,0 +1,8 @@
+create database demo;
+
+create table user(
+ username varchar(100),
+ password varchar(100)
+);
+
+insert into user values('User1','123');
