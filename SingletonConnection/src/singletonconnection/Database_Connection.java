@@ -55,7 +55,7 @@ public class Database_Connection {
             }
         }
         return uniqueDatabaseInstance;
-        
+
     }
 
     /**
@@ -75,12 +75,11 @@ public class Database_Connection {
     public Statement createStatement() {
         try {
             stmt = (Statement) uniqueDatabaseInstance.connection.createStatement();
-        } catch (SQLException e) {     
+        } catch (SQLException e) {
         }
         return stmt;
     }
-    
-    //
+
     public static boolean runQuery(String query) {
         boolean isSuccess = false;
 
@@ -102,8 +101,8 @@ public class Database_Connection {
 
         return isSuccess;
     }
-    
-     public static ResultSet runSearchQuery(String query) {
+
+    public static ResultSet runSearchQuery(String query) {
         ResultSet rs = null;
 
         PreparedStatement preparedStmt = null;
@@ -120,14 +119,14 @@ public class Database_Connection {
 
         return rs;
     }
+
     public static boolean runQueries(List<String> queries) throws SQLException {
 
         boolean isSuccess = false;
         PreparedStatement preparedStmt = null;
         Connection local_Connection;
-        
+
         local_Connection = Database_Connection.getDBConnection().connection;
-        
 
         try {
             local_Connection.setAutoCommit(false);
@@ -151,7 +150,5 @@ public class Database_Connection {
 
         return isSuccess;
     }
-
-   
 
 }
