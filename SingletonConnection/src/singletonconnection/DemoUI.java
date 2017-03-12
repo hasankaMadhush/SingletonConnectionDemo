@@ -71,6 +71,7 @@ public class DemoUI extends javax.swing.JFrame {
 
         loginStatusMsgLbl.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         loginStatusMsgLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginStatusMsgLbl.setText("Status");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,8 +102,8 @@ public class DemoUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loginStatusMsgLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginStatusMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +114,7 @@ public class DemoUI extends javax.swing.JFrame {
                     .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(loginBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -123,32 +124,29 @@ public class DemoUI extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String user = "";
-        String pwd="";
+        String pwd = "";
 
-        String uname=usernameTxt.getText();
-        String password=passwordTxt.getText();
+        String uname = usernameTxt.getText();
+        String password = passwordTxt.getText();
 
-        String query="Select * from user Where username='" + uname + "'";
-        ResultSet rs=Database_Connection.runSearchQuery(query);
-          System.out.println(query);
-        try {         
+        String query = "Select * from user Where username='" + uname + "'";
+        ResultSet rs = Database_Connection.runSearchQuery(query);
+
+        try {
             while (rs.next()) {
-               user =rs.getString("username");
-               System.out.println(user);
-               pwd=rs.getString("password");
-               System.out.println(pwd);
+                user = rs.getString("username");         
+                pwd = rs.getString("password");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DemoUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-         if(uname.equals(user) && pwd.equals(password)){
-             loginStatusMsgLbl.setText("login successfull");
-         }
-         else{
-         loginStatusMsgLbl.setText("login Unsuccessfull");
-         }
-         
-        
+        if (uname.equals(user) && pwd.equals(password)) {
+            loginStatusMsgLbl.setText("login successfull");
+        } else {
+            loginStatusMsgLbl.setText("login Unsuccessfull");
+        }
+
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**

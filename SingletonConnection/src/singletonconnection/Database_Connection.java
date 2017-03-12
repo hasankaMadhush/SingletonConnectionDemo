@@ -54,7 +54,6 @@ public class Database_Connection {
                 }
             }
         }
-        System.out.println(uniqueDatabaseInstance);
         return uniqueDatabaseInstance;
         
     }
@@ -76,8 +75,7 @@ public class Database_Connection {
     public Statement createStatement() {
         try {
             stmt = (Statement) uniqueDatabaseInstance.connection.createStatement();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        } catch (SQLException e) {     
         }
         return stmt;
     }
@@ -104,6 +102,7 @@ public class Database_Connection {
 
         return isSuccess;
     }
+    
      public static ResultSet runSearchQuery(String query) {
         ResultSet rs = null;
 
